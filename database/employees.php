@@ -109,6 +109,7 @@ else if (($_SERVER["REQUEST_METHOD"] == "GET") && (!isset($_GET["id"]))) {
             while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
                 array_push($employees,
                     [
+                        "id" => $row["id"],
                         "name" => $row["name"],
                         'mobileno' => $row["mobileno"],
                         'date_joined' => $row["date_joined"],
@@ -169,6 +170,7 @@ else if (isset($_GET["id"]) && !empty(trim($_GET["id"]))) {
                 $data = ['status' => 'success',
                     'message' => "Employee retrieved successfully",
                     'data' => [
+                        'id' => $row["id"],
                         'name' => $row["name"],
                         'mobileno' => $row["mobileno"],
                         'date_joined' => $row["date_joined"],
@@ -221,7 +223,7 @@ else if (isset($_POST["delete"]) && !empty($_POST["delete"])) {
 
         // Attempt to execute the prepared statement
         if ($stmt->execute()) {
-            // Records deleted successfully. Redirect to landing page
+            // Records deleted successfully. Return success message
             $data = ['status' => 'success', 'message' => "Employee deleted successfully"];
             header('Content-Type: application/json; charset=utf-8');
             echo json_encode($data);

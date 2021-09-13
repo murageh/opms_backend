@@ -169,7 +169,7 @@ else if(isset($_POST["delete"]) && !empty($_POST["delete"])){
 
         // Attempt to execute the prepared statement
         if($stmt->execute()){
-            // Records deleted successfully. Redirect to landing page
+            // Records deleted successfully. Return success message
             $data = ['status' => 'success', 'message' => "Activity deleted successfully"];
             header('Content-Type: application/json; charset=utf-8');
             echo json_encode($data);

@@ -175,8 +175,8 @@ else if(isset($_POST["delete"]) && !empty($_POST["delete"])){
 
         // Attempt to execute the prepared statement
         if($stmt->execute()){
-            // Records deleted successfully. Redirect to landing page
-            $data = ['status' => 'success', 'message' => "Inventor item deleted successfully"];
+            // Records deleted successfully. Return success message
+            $data = ['status' => 'success', 'message' => "Inventory item deleted successfully"];
             header('Content-Type: application/json; charset=utf-8');
             echo json_encode($data);
             exit();
